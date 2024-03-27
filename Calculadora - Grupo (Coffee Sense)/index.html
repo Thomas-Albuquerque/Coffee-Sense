@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simule Aqui!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="banner">
+        <img class="bg" src="/COFFEE SENSE.jpg">
+        <div class="container">
+            <div class="formulario">
+                <h2 class="titulo">Simule Aqui!</h2>
+                Área da plantação (em hectare): <input type="number" id="input_areaTotal"><br>
+                Quantidade de sacas esperadas na última safra: <input type="number" id="input_sacasEsperadas"><br>
+                Quantidade de sacas colhidas na última safra: <input type="number" id="input_sacasUltimaSafra"><br>
+                Preço médio da saca vendida (R$): <input type="number" id="input_precoSaca"><br>  
+
+                <div class="botoes">
+                    <button class="botao" onclick="verPerdas()">Perda</button>
+                    <button class="botao" onclick="AnalisarRendimento()">Rendimento</button>
+                </div>
+
+                <div id="exibir"></div>
+            </div>
+        </div>
+</body>
+
+</html>
+<script>
+    function verPerdas() {
+
+        var area = Number(input_areaTotal.value);
+        var sacasColhidasUltimaSafra = Number(input_sacasUltimaSafra.value)
+        var sacasEsperadas = Number(input_sacasEsperadas.value)
+        var precoSafra = Number(input_precoSaca.value)
+
+        var lucroEsperado = sacasEsperadas * precoSafra
+        var perdaSafra = sacasEsperadas - sacasColhidasUltimaSafra
+        var perdaSafraPreco = perdaSafra * precoSafra
+
+        exibir.innerHTML =
+            `Olá Produtor(a)!<br>
+        A plantação apresenta uma perda de safra de ${perdaSafra} sacas. <br> 
+        Sem as perdas, o lucro obtido seria de R$${sacasEsperadas * precoSafra}. Porém, perde-se R$${perdaSafraPreco}.
+        Logo, seu faturamento líquido é de R$${lucroEsperado - perdaSafraPreco}.`
+    }
+
+    function AnalisarRendimento() {
+        var area = Number(input_areaTotal.value);
+        var sacasColhidasUltimaSafra = Number(input_sacasUltimaSafra.value)
+        var sacasEsperadas = Number(input_sacasEsperadas.value)
+        var precoValor = Number(input_precoSaca.value)
+
+        var rendimentoReal = (sacasEsperadas - sacasColhidasUltimaSafra) / area
+        var rendimentoEsperado = sacasEsperadas / area
+        var porcentagemRendimento = rendimentoEsperado / rendimentoReal
+
+        exibir.innerHTML =
+            `<br>Com um rendimento esperado de ${rendimentoEsperado.toFixed(2)} sacas/ha e um rendimento real de ${rendimentoReal.toFixed(2)} sacas/ha, 
+         perde-se ${porcentagemRendimento.toFixed(1)}% do rendimento da plantação.<br>
+         Nas próximas 10 sacas, o prejuízo do seu rendimento será de ${10 * porcentagemRendimento.toFixed(1)}%.`
+    }
+</script>
