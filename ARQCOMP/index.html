@@ -17,27 +17,29 @@
 </head>
 
 <body>
-    <div>
+    <div style="display: flex; align-items: column;">
         <h1>Sensor DHT 11 - Umidade</h1>
-        <section style="width:100%">
+        <section style="width:40%";>
             <canvas id="dht11Umidade"></canvas>
         </section>
         <h1>Sensor DHT 11 - Temperatura</h1>
-        <section style="width: 100%;">
+        <section style="width: 40%;">
             <canvas id="dht11Temperatura"></canvas>
         </section>
-        <h1>Sensor Luminosidade</h1>
+        <!-- <h1>Sensor Luminosidade</h1>
         <section style="width: 100%;">
             <canvas id="luminosidade"></canvas>
         </section>
         <h1>Sensor LM 35 - Temperatura</h1>
         <section style="width: 100%;">
             <canvas id="lm35Temperatura"></canvas>
-        </section>
+        </section> -->
+        <div style="display: none;">
         <h1>Sensor Chave</h1>
         <section style="width: 100%;">
             <canvas id="chave"></canvas>
         </section>
+    </div>
     </div>
 
     <script>
@@ -53,8 +55,8 @@
                     datasets: [{
                         label: 'Umidade',
                         type: 'line',
-                        borderColor: ['#45b3e7'],
-                        backgroundColor: ['#89cff0']
+                        borderColor: ['blue']
+                        //  backgroundColor: ['nu']
                     }]
                 },
                 options: {
@@ -76,7 +78,7 @@
                         }]
                     },
                     animation: {
-                        duration: 0
+                        duration: 4
                     }
                 }
             }
@@ -93,88 +95,8 @@
                     datasets: [{
                         label: "Temperatura",
                         type: 'line',
-                        borderColor: ['#ff3232'],
-                        backgroundColor: ['#ff7f7f']
-                    }]
-                },
-                options: {
-                    scales: {
-                        xAxes: [{
-                            distribution: 'series',
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }],
-                        yAxes: [{
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Luminosidade'
-                            },
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    },
-                    animation: {
-                        duration: 0
-                    }
-                }
-            }
-        );
-        /* -- luminosidade -- */
-        var contextoLuminosidade = document.getElementById('luminosidade').getContext('2d');
-        contextoLuminosidade.canvas.width = 1000;
-        contextoLuminosidade.canvas.height = 300;
-        var luminosidade = new Chart(
-            contextoLuminosidade,
-            {
-                type: 'line',
-                data: {
-                    datasets: [{
-                        label: 'Luminosidade',
-                        type: 'line',
-                        borderColor: ['#ffd902'],
-                        backgroundColor: ['#ffe135']
-                    }]
-                },
-                options: {
-                    scales: {
-                        xAxes: [{
-                            distribution: 'series',
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }],
-                        yAxes: [{
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Luminosidade'
-                            },
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    },
-                    animation: {
-                        duration: 0
-                    }
-                }
-            }
-        );
-        /* -- lm35Temperatura */
-        var contextoLm35Temperatura = document.getElementById('lm35Temperatura').getContext('2d');
-        contextoLm35Temperatura.canvas.width = 1000;
-        contextoLm35Temperatura.canvas.height = 300;
-        var lm35Temperatura = new Chart(
-            contextoLm35Temperatura,
-            {
-                type: 'line',
-                data: {
-                    datasets: [{
-                        label: 'Temperatura',
-                        type: 'line',
-                        borderColor: ['#ffd902'],
-                        backgroundColor: ['#ffe135']
+                        borderColor: ['red'],
+                        // backgroundColor: ['#ff7f7f']
                     }]
                 },
                 options: {
@@ -196,12 +118,94 @@
                         }]
                     },
                     animation: {
-                        duration: 0
+                        duration: 7
                     }
                 }
             }
         );
+        // /* -- luminosidade -- */
+        // var contextoLuminosidade = document.getElementById('luminosidade').getContext('2d');
+        // contextoLuminosidade.canvas.width = 1000;
+        // contextoLuminosidade.canvas.height = 300;
+        // var luminosidade = new Chart(
+        //     contextoLuminosidade,
+        //     {
+        //         type: 'line',
+        //         data: {
+        //             datasets: [{
+        //                 label: 'Luminosidade',
+        //                 type: 'line',
+        //                 borderColor: ['#ffd902'],
+        //                 backgroundColor: ['#ffe135']
+        //             }]
+        //         },
+        //         options: {
+        //             scales: {
+        //                 xAxes: [{
+        //                     distribution: 'series',
+        //                     ticks: {
+        //                         beginAtZero: true
+        //                     }
+        //                 }],
+        //                 yAxes: [{
+        //                     scaleLabel: {
+        //                         display: true,
+        //                         labelString: 'Luminosidade'
+        //                     },
+        //                     ticks: {
+        //                         beginAtZero: true
+        //                     }
+        //                 }]
+        //             },
+        //             animation: {
+        //                 duration: 0
+        //             }
+        //         }
+        //     }
+        // );
+        // /* -- lm35Temperatura */
+        // var contextoLm35Temperatura = document.getElementById('lm35Temperatura').getContext('2d');
+        // contextoLm35Temperatura.canvas.width = 1000;
+        // contextoLm35Temperatura.canvas.height = 300;
+        // var lm35Temperatura = new Chart(
+        //     contextoLm35Temperatura,
+        //     {
+        //         type: 'line',
+        //         data: {
+        //             datasets: [{
+        //                 label: 'Temperatura',
+        //                 type: 'line',
+        //                 borderColor: ['#ffd902'],
+        //                 backgroundColor: ['#ffe135']
+        //             }]
+        //         },
+        //         options: {
+        //             scales: {
+        //                 xAxes: [{
+        //                     distribution: 'series',
+        //                     ticks: {
+        //                         beginAtZero: true
+        //                     }
+        //                 }],
+        //                 yAxes: [{
+        //                     scaleLabel: {
+        //                         display: true,
+        //                         labelString: 'Temperatura'
+        //                     },
+        //                     ticks: {
+        //                         beginAtZero: true
+        //                     }
+        //                 }]
+        //             },
+        //             animation: {
+        //                 duration: 0
+        //             }
+        //         }
+        //     }
+        // );
         /* -- chave */
+
+        
         var contextoChave = document.getElementById('chave').getContext('2d');
         contextoChave.canvas.width = 1000;
         contextoChave.canvas.height = 300;
